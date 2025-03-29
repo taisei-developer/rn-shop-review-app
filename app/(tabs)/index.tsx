@@ -1,7 +1,9 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, FlatList, SafeAreaView } from "react-native";
 import { useEffect, useState } from "react";
 /* lib */
 import { getShops } from "../../src/lib/firebase";
+/* components */
+import { ShopReviewItem } from "@/components/ShopReviewItem";
 /* types */
 import Shop from "../../src/types/shop";
 
@@ -12,22 +14,23 @@ export default function HomeScreen() {
     getFirebaseItems();
   }, []);
 
+  // データベースからデータを取得
   const getFirebaseItems = async () => {
     const shops = await getShops();
     setShops(shops);
   };
 
-  const shopItems = shops.map((shop, index) => (
-    <View style={{ margin: 10 }} key={index.toString()}>
-      <Text>{shop.name}</Text>
-      <Text>{shop.place}</Text>
-    </View>
-  ));
-
   return (
-    <View style={styles.container}>
-      {shopItems}
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={shops}
+        renderItem={({ item }: { item: Shop }) => (
+          <ShopReviewItem shop={item} />
+        )}
+        keyExtractor={(item, index) => index.toString()}
+        numColumns={2}
+      />
+    </SafeAreaView>
   );
 }
 

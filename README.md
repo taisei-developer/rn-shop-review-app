@@ -1,46 +1,101 @@
-# Welcome to your Expo app 👋
+# React Native ショップレビューアプリ 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+このプロジェクトは[Expo](https://expo.dev)を使用して作成された React Native アプリケーションです。
 
-## Get started
+## プロジェクトの構造
 
-1. Install dependencies
+```
+rn-shop-review-app/
+├── app/                    # アプリケーションのメインコード
+│   ├── (tabs)/            # タブナビゲーション用のディレクトリ
+│   │   ├── index.tsx      # ホーム画面（最初に表示される画面）
+│   │   ├── explore.tsx    # 探索画面
+│   │   └── _layout.tsx    # タブナビゲーションの設定
+│   └── _layout.tsx        # アプリケーション全体のレイアウト設定
+├── components/            # 再利用可能なコンポーネント
+├── constants/            # アプリケーションで使用する定数
+├── hooks/               # カスタムフック
+└── assets/             # 画像やフォントなどのリソース
+```
+
+## 主要なファイルの説明
+
+### 1. アプリケーションのエントリーポイント
+
+- `app/(tabs)/index.tsx`: アプリを起動すると最初に表示される画面
+  - パララックススクロールビューを使用
+  - ライト/ダークモードに対応
+  - 開発者ツールの使い方などの説明を表示
+
+### 2. ナビゲーション設定
+
+- `app/(tabs)/_layout.tsx`: タブナビゲーションの設定
+  - ホームと探索の 2 つのタブを定義
+  - タブアイコンとスタイルの設定
+
+### 3. アプリケーション全体の設定
+
+- `app/_layout.tsx`: アプリケーションの基本レイアウト
+  - フォントの読み込み
+  - テーマの設定
+  - スプラッシュスクリーンの制御
+
+## 開発を始める
+
+1. 依存関係のインストール
 
    ```bash
    npm install
    ```
 
-2. Start the app
+2. アプリケーションの起動
 
    ```bash
-    npx expo start
+   npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+3. 開発オプション
+   - iOS シミュレーター: `i`キー
+   - Android エミュレーター: `a`キー
+   - Web ブラウザ: `w`キー
+   - デバッガー: `j`キー
+   - アプリのリロード: `r`キー
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 開発のヒント
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+1. **ファイルベースルーティング**
 
-## Get a fresh project
+   - `app`ディレクトリ内のファイル構造がそのままルーティングになります
+   - `(tabs)`のような括弧付きディレクトリは URL に表示されません
 
-When you're ready, run:
+2. **コンポーネントの作成**
+
+   - 再利用可能なコンポーネントは`components`ディレクトリに配置
+   - 各コンポーネントは独立したファイルとして管理
+
+3. **スタイリング**
+
+   - React Native では CSS の代わりに StyleSheet を使用
+   - レスポンシブデザインには`flex`を使用
+
+4. **デバッグ**
+   - iOS: `cmd + d`
+   - Android: `cmd + m`
+   - Web: `F12`
+
+## 新しいプロジェクトの開始
+
+現在のコードを`app-example`ディレクトリに移動し、新しい空の`app`ディレクトリを作成するには：
 
 ```bash
 npm run reset-project
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 参考リンク
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- [Expo ドキュメント](https://docs.expo.dev/)
+- [React Native ドキュメント](https://reactnative.dev/docs/getting-started)
+- [Expo Router ドキュメント](https://docs.expo.dev/router/introduction/)
 
 ## Join the community
 
